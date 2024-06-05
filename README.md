@@ -12,3 +12,4 @@ Oh my Gosh!! Yeah! No pain No gain!
 Thật là vãi chưởng!
 Thật không nhỉ!
 Khóc!
+Khóc đi!
