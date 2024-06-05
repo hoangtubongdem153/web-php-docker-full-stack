@@ -30,12 +30,12 @@
     $posts = [
         [
             'title' => 'Bài viết đầu tiên',
-            'date' => '2023-12-01',
+            'date' => '2024-06-04',
             'content' => 'Đây là nội dung bài viết đầu tiên của tôi. Chào mừng các bạn!'
         ],
         [
             'title' => 'Bài viết thứ hai',
-            'date' => '2023-12-05',
+            'date' => '2024-06-05',
             'content' => 'Bài viết này nói về một chủ đề thú vị khác.'
         ],
         // Thêm các bài viết khác ở đây
