@@ -22,7 +22,7 @@ pipeline {
 
         stage('Test Web App') { // (Tùy chọn) Thêm các bước kiểm thử nếu cần
             steps {
-                sh 'curl http://localhost:80' // Hoặc cổng mà ứng dụng của bạn chạy
+                sh 'curl http://localhost:80' // Hoặc cổng mà ứng dụng đang chạy
             }
         }
     }
