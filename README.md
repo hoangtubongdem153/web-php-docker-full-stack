@@ -11,3 +11,4 @@ Open the interactive terminal with your docker container that's running the `www
 Oh my Gosh!! Yeah! No pain No gain!
 Thật là vãi chưởng!
 Thật không nhỉ!
+Khóc!
