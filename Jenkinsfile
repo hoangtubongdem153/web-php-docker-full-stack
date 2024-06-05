@@ -10,7 +10,6 @@ pipeline {
 
         stage('Build and Run with Docker Compose') {
             steps {
-                sh 'cd ./web-php-docker-full-stack'
                 sh 'docker-compose up -d --build' 
             }
         }
