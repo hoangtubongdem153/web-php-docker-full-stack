@@ -8,6 +8,12 @@ pipeline {
             }
         }
 
+        stage('Stop current Webapp!') {
+            steps {
+                sh 'docker-compose stop'
+            }
+        }
+
         stage('Build and Run with Docker Compose') {
             steps {
                 sh 'docker-compose up -d' 
