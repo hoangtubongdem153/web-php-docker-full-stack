@@ -10,13 +10,17 @@ pipeline {
 
         stage('Stop current Webapp!') {
             steps {
-                sh 'docker-compose stop'
+                sh '''
+                docker-compose stop
+                docker stop  $(docker ps -q)
+                '''
+                sleep time: 15, unit: 'SECONDS'
             }
         }
 
         stage('Build and Run with Docker Compose') {
             steps {
-                sh 'docker-compose up -d' 
+                sh 'docker-compose up -d --build' 
             }
         }
 
