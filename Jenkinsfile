@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SNYK_TOKEN = credentials('snyk-api-token') // Lấy api từ credential jenkins
+        SNYK_TOKEN = credentials('snyk_api_token') // Lấy api từ credential jenkins
     }
     
     stages {
