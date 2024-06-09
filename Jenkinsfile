@@ -8,6 +8,13 @@ pipeline {
             }
         }
 
+        stage('Install Dependencies') {
+            steps {
+                // Cài đặt các dependencies cần thiết (ví dụ: npm install)
+                sh 'npm install'
+            }
+        }
+
         stage('Test Snyk SCA Scan!') {
             steps {
                 echo 'Testing...'
@@ -28,7 +35,7 @@ pipeline {
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token',
                     additionalArguments: 'code test --debug',
-                    failOnError: false
+                    failOnError: true,
                 )
             }
         }
