@@ -44,6 +44,13 @@ pipeline {
                     }
                 }
             }
+            post {
+                always {
+                    // Chuyển đổi báo cáo JSON thành HTML và lưu trữ báo cáo Snyk
+                    sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
+                    archiveArtifacts artifacts: 'snyk-report.html'
+                }
+            }
         }
 
         stage('Stop current Webapp!') {
