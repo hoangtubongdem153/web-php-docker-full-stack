@@ -20,6 +20,19 @@ pipeline {
             }
         }
 
+        stage('Test Snyk SAST Scan!') {
+            steps {
+                echo 'Testing...'
+                snykSecurity(
+                    severity: 'high', 
+                    snykInstallation: 'Snyk', 
+                    snykTokenId: 'snyk_api_token',
+                    additionalArguments: 'code test',
+                    failOnError: false
+                )
+            }
+        }
+
         stage('Stop current Webapp!') {
             steps {
                 sh 'docker-compose down'
