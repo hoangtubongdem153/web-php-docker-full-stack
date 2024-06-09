@@ -8,13 +8,6 @@ pipeline {
             }
         }
 
-        stage('Stop current Webapp!') {
-            steps {
-                sh 'docker-compose down'
-                sleep time: 15, unit: 'SECONDS'
-            }
-        }
-
         stage('Test Snyk Scan!') {
             steps {
                 echo 'Testing...'
@@ -23,6 +16,13 @@ pipeline {
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token'
                 )
+            }
+        }
+
+        stage('Stop current Webapp!') {
+            steps {
+                sh 'docker-compose down'
+                sleep time: 15, unit: 'SECONDS'
             }
         }
         
