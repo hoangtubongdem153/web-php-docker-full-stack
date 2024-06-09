@@ -46,12 +46,7 @@ pipeline {
                     }
                 }
             }
-            post {
-                always {
-                    // Chuyển đổi báo cáo JSON thành HTML và lưu trữ báo cáo Snyk
-                    
-                }
-            }
+            
         }
 
         stage('Stop current Webapp!') {
