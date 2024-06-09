@@ -15,6 +15,17 @@ pipeline {
             }
         }
 
+        stage('Test Snyk Scan!') {
+            steps {
+                echo 'Testing...'
+                snykSecurity(
+                    severity: 'high', 
+                    snykInstallation: 'Snyk', 
+                    snykTokenId: 'snyk_api_token'
+                )
+            }
+        }
+        
         stage('Build and Run with Docker Compose') {
             steps {
                 sh 'docker-compose up -d --build' 
