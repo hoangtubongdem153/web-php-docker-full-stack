@@ -34,12 +34,11 @@ pipeline {
         stage('Test Snyk SAST Scan!') {
             steps {
                 echo 'Testing...'
-                sh "snyk config set api=$SNYK_TOKEN" // Cấu hình Snyk token
-                sh "snyk code test --json --severity-threshold=high" // Thực hiện Snyk test
-                // Có thể thêm các tùy chọn khác của Snyk CLI tại đây
-                // Xử lý kết quả quét (ví dụ: fail pipeline nếu có lỗ hổng nghiêm trọng)
+                sh "snyk config set api=${SNYK_TOKEN}" // Cấu hình Snyk token
+                sh "snyk code test --json-file-output=snyk-report.json --severity-threshold=high" // Thực hiện Snyk test
+                // Xử lý kết quả quét
                 script {
-                    def snykResult = readJSON file: 'snyk-output.json'
+                    def snykResult = readJSON file: 'snyk-report.json'
                     if (snykResult.vulnerabilities.size() > 0) {
                         error("Snyk found vulnerabilities!")
                     }
@@ -69,8 +68,8 @@ pipeline {
     
     post {
         always {
-            // Lưu trữ báo cáo Snyk (tùy chọn)
-            sh "snyk code test --report"
+            // Chuyển đổi báo cáo JSON thành HTML và lưu trữ báo cáo Snyk
+            sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
             archiveArtifacts artifacts: 'snyk-report.html'
         }
     }
