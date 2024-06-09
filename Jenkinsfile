@@ -27,7 +27,7 @@ pipeline {
                     severity: 'high', 
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token',
-                    additionalArguments: 'code test',
+                    additionalArguments: 'code test --debug',
                     failOnError: false
                 )
             }
