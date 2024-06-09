@@ -52,4 +52,12 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            // Các bước cần thực hiện sau khi hoàn thành pipeline, ví dụ: lưu trữ kết quả kiểm tra
+            archiveArtifacts artifacts: '**/target/*.xml', allowEmptyArchive: true
+            junit '**/target/surefire-reports/*.xml'
+        }
+    }
 }
