@@ -8,16 +8,17 @@ pipeline {
             }
         }
 
-        // stage('Test Snyk Scan!') {
-        //     steps {
-        //         echo 'Testing...'
-        //         snykSecurity(
-        //             severity: 'high', 
-        //             snykInstallation: 'Snyk', 
-        //             snykTokenId: 'snyk_api_token'
-        //         )
-        //     }
-        // }
+        stage('Test Snyk Scan!') {
+            steps {
+                echo 'Testing...'
+                snykSecurity(
+                    severity: 'high', 
+                    snykInstallation: 'Snyk', 
+                    snykTokenId: 'snyk_api_token',
+                    failOnError: false
+                )
+            }
+        }
 
         stage('Stop current Webapp!') {
             steps {
