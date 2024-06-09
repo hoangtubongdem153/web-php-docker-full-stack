@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Cài đặt các dependencies cần thiết (ví dụ: npm install)
+                // Cài đặt các dependencies cần thiết (ví dụ: npm install)!
                 sh 'npm install'
             }
         }
