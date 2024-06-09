@@ -38,6 +38,8 @@ pipeline {
                 sh "snyk code test --json-file-output=snyk-report.json --severity-threshold=high" // Thực hiện Snyk test
                 // Xử lý kết quả quét
                 script {
+                    sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
+                    archiveArtifacts artifacts: 'snyk-report.html'
                     def snykResult = readJSON file: 'snyk-report.json'
                     if (snykResult.vulnerabilities.size() > 0) {
                         error("Snyk found vulnerabilities!")
@@ -47,8 +49,7 @@ pipeline {
             post {
                 always {
                     // Chuyển đổi báo cáo JSON thành HTML và lưu trữ báo cáo Snyk
-                    sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
-                    archiveArtifacts artifacts: 'snyk-report.html'
+                    
                 }
             }
         }
@@ -73,11 +74,4 @@ pipeline {
         }
     }
     
-    post {
-        always {
-            // Chuyển đổi báo cáo JSON thành HTML và lưu trữ báo cáo Snyk
-            sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
-            archiveArtifacts artifacts: 'snyk-report.html'
-        }
-    }
 }
