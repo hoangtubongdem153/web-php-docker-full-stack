@@ -47,7 +47,7 @@ pipeline {
         stage('Stop current Webapp!') {
             steps {
                 sh 'docker-compose down'
-                sleep time: 10, unit: 'SECONDS'
+                sleep time: 5, unit: 'SECONDS'
             }
         }
         
