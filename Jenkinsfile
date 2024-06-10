@@ -46,21 +46,51 @@ pipeline {
                 //     error("Snyk found vulnerabilities!")
                 // }   
             }
-            
+            post {
+                failure {
+                    echo 'Snyk SAST Scan failed. Skipping Stop current Webapp and Build and Run with Docker Compose stages.'
+                    currentBuild.result = 'UNSTABLE'
+                    // Chuyển hướng thực hiện đến bước "Test Web App"
+                    script {
+                        skipNextStages = true
+                    }
+                }
+            }
         }
 
         stage('Stop current Webapp!') {
+            when {
+                expression { return !skipNextStages }
+            }
             steps {
                 sh 'docker-compose down'
                 sleep time: 10, unit: 'SECONDS'
             }
         }
-        
+
         stage('Build and Run with Docker Compose') {
+            when {
+                expression { return !skipNextStages }
+            }
             steps {
                 sh 'docker-compose up -d --build' 
             }
         }
+            
+        }
+
+        // stage('Stop current Webapp!') {
+        //     steps {
+        //         sh 'docker-compose down'
+        //         sleep time: 10, unit: 'SECONDS'
+        //     }
+        // }
+        
+        // stage('Build and Run with Docker Compose') {
+        //     steps {
+        //         sh 'docker-compose up -d --build' 
+        //     }
+        // }
 
         stage('Test Web App') { // (Tùy chọn) Thêm các bước kiểm thử nếu cần
             steps {
