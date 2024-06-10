@@ -14,10 +14,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Cài đặt các dependencies cần thiết (ví dụ: npm install)!
+                // Cài đặt , cập nhậtnhật các dependencies cần thiết!
                 sh 'npm install'
-                // sh 'npm install --package-lock-only'
-                // sh 'npm ci'
             }
         }
 
@@ -47,7 +45,7 @@ pipeline {
         stage('Stop current Webapp!') {
             steps {
                 sh 'docker-compose down'
-                sleep time: 5, unit: 'SECONDS'
+                // sleep time: 5, unit: 'SECONDS'
             }
         }
         
@@ -57,11 +55,11 @@ pipeline {
             }
         }
 
-        stage('Test Web App') { // (Tùy chọn) Thêm các bước kiểm thử nếu cần
+        stage('Test Web App') { // Thêm các bước kiểm thử nếu cần
             steps {
-                echo 'Done!' // ứng dụng đang chạy
+                echo 'Done!' // 
             }
         }
     }
     
-}  // Chỉnh sửa file để kích hoạt trigger jenkins pipeline!
+} 
