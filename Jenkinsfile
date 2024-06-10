@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 snykSecurity(
-                    severity: 'medium', // chỉnh sửa mức độ quét lỗ hổng mức medium! 
+                    severity: 'high', // chỉnh sửa mức độ quét lỗ hổng mức high! 
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token',
                     failOnError: false
