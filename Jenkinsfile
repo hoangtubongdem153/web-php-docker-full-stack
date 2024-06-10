@@ -33,24 +33,24 @@ pipeline {
             }
         }
 
-        // stage('Test Snyk SAST Scan!') {
-        //     steps {
-        //         echo 'Testing...'
-        //         sh 'snyk auth ${SNYK_TOKEN}'
-        //         // sh "snyk config set api=${SNYK_TOKEN}" // Cấu hình Snyk token
-        //         sh "snyk code test --json-file-output=snyk-report.json --severity-threshold=high" // Thực hiện Snyk test
-        //         // Xử lý kết quả quét
-        //         script {
-        //             sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
-        //             archiveArtifacts artifacts: 'snyk-report.html'
-        //             // def snykResult = readJSON file: 'snyk-report.json'
-        //             // if (snykResult.vulnerabilities.size() > 0) {
-        //             //     error("Snyk found vulnerabilities!")
-        //             // }
-        //         }
-        //     }
+        stage('Test Snyk SAST Scan!') {
+            steps {
+                echo 'Testing...'
+                sh 'snyk auth ${SNYK_TOKEN}'
+                // sh "snyk config set api=${SNYK_TOKEN}" // Cấu hình Snyk token
+                sh "snyk code test --json-file-output=snyk-report.json --severity-threshold=high" // Thực hiện Snyk test
+                // Xử lý kết quả quét
+                script {
+                    sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
+                    archiveArtifacts artifacts: 'snyk-report.html'
+                    // def snykResult = readJSON file: 'snyk-report.json'
+                    // if (snykResult.vulnerabilities.size() > 0) {
+                    //     error("Snyk found vulnerabilities!")
+                    // }
+                }
+            }
             
-        // }
+        }
 
         stage('Stop current Webapp!') {
             steps {
