@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 snykSecurity(
-                    severity: 'medium', 
+                    severity: 'high', 
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token',
                     failOnError: false
