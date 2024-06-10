@@ -49,7 +49,6 @@ pipeline {
             post {
                 failure {
                     echo 'Snyk SAST Scan failed. Skipping Stop current Webapp and Build and Run with Docker Compose stages.'
-                    currentBuild.result = 'UNSTABLE'
                     // Chuyển hướng thực hiện đến bước "Test Web App"
                     script {
                         skipNextStages = true
