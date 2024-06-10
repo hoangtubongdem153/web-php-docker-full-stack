@@ -16,6 +16,8 @@ pipeline {
             steps {
                 // Cài đặt các dependencies cần thiết (ví dụ: npm install)!
                 sh 'npm install'
+                // sh 'npm install --package-lock-only'
+                // sh 'npm ci'
             }
         }
 
