@@ -64,4 +64,4 @@ pipeline {
         }
     }
     
-}  
+}  // Chỉnh sửa file để kích hoạt trigger jenkins pipeline!
