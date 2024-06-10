@@ -12,14 +12,14 @@ pipeline {
             }
         }
 
-        // stage('Install Dependencies') {
-        //     steps {
-        //         // Cài đặt các dependencies cần thiết (ví dụ: npm install)!
-        //         sh 'npm install'
-        //         // sh 'npm install --package-lock-only'
-        //         // sh 'npm ci'
-        //     }
-        // }
+        stage('Install Dependencies') {
+            steps {
+                // Cài đặt các dependencies cần thiết (ví dụ: npm install)!
+                sh 'npm install'
+                // sh 'npm install --package-lock-only'
+                // sh 'npm ci'
+            }
+        }
 
         stage('Test Snyk SCA Scan!') {
             steps {
