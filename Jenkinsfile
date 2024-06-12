@@ -26,7 +26,7 @@ pipeline {
                     severity: 'medium', // chỉnh sửa mức độ quét lỗ hổng mức medium! 
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token',
-                    failOnError: false
+                    failOnError: 
                 )
             }
         }
