@@ -9,6 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Hello World!'
+                checkout scm
             }
         }
 
@@ -61,5 +62,15 @@ pipeline {
             }
         }
     }
+    
+    post {
+        failure {
+            echo 'Cleaning up workspace...'
+            cleanWs() // Xóa tất cả các thay đổi trong workspace
+        }
+        always {
+            echo 'Pipeline finished.'
+        }
+}
     
 } 
