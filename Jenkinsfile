@@ -15,7 +15,16 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Cài đặt , cập nhậtnhậthigh', // chỉnh sửa mức độ quét lỗ hổng mức medium!   
+                // Cài đặt , cập nhậtnhật các dependencies cần thiết!
+                sh 'npm install'
+            }
+        }
+
+        stage('Test Snyk SCA Scan!') {
+            steps {
+                echo 'Testing...'
+                snykSecurity(
+                    severity: 'hight', // chỉnh sửa mức độ quét lỗ hổng mức medium!   
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token',
                     failOnError: true 
