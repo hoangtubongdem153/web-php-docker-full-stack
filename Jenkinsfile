@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any   
 
     environment {  
         SNYK_TOKEN = credentials('snyk-api-token') // Lấy api từ credential jenkins
