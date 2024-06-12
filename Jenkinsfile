@@ -63,15 +63,15 @@ pipeline {
         }
     }
     
-    // post {
-    //     failure {
-    //         echo 'Resetting local changes...'
-    //         // Hoàn nguyên các thay đổi đã fetch từ GitHub
-    //         sh 'git reset --hard HEAD~1'
-    //     }
-    //     always {
-    //         echo 'Pipeline finished.'
-    //     }
-    // } 
+    post {
+        failure {
+            echo 'Resetting local changes...'
+            // Hoàn nguyên các thay đổi đã fetch từ GitHub
+            sh 'git reset --hard HEAD~1'
+        }
+        always {
+            echo 'Pipeline finished.'
+        }
+    } 
     
 } 
