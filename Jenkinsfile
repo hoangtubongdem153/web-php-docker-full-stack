@@ -24,7 +24,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 snykSecurity(
-                    severity: 'medium', // chỉnh sửa mức độ quét lỗ hổng mức medium!   
+                    severity: 'highthight', // chỉnh sửa mức độ quét lỗ hổng mức medium!   
                     snykInstallation: 'Snyk', 
                     snykTokenId: 'snyk_api_token',
                     failOnError: true 
@@ -46,7 +46,7 @@ pipeline {
         stage('Stop current Webapp!') {
             steps {
                 sh 'docker-compose down'
-                // sleep time: 5, unit: 'SECONDS'
+                sleep time: 5, unit: 'SECONDS'
             }
         }
         
