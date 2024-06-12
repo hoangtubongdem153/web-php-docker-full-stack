@@ -23,7 +23,7 @@
 </head>
 <body>
 
-    <h1>Chào mừng đến với blog của tôi! - VTT </h1> 
+    <h1>Chào mừng đến với blog của tôi! - VTT - Mình là Trần Thanh Tùng! </h1> 
 
     <?php
     // Mảng chứa các bài viết
