@@ -39,6 +39,7 @@ pipeline {
                 sh "snyk code test  --severity-threshold=high --json > snyk-report.json" // Thực hiện Snyk test
                 // Xử lý kết quả quét
                 sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
+                // lưu kết quả vào file html
                 archiveArtifacts artifacts: 'snyk-report.html' 
             }
         }
