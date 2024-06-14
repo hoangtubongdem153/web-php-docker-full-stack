@@ -32,16 +32,16 @@ pipeline {
             }
         }
 
-        // stage('Test Snyk SAST Scan!') {
-        //     steps {
-        //         echo 'Testing...'
-        //         sh 'snyk auth ${SNYK_TOKEN}'
-        //         sh "snyk code test  --severity-threshold=high --json-file-output=snyk-report.json" // Thực hiện Snyk test
-        //         // Xử lý kết quả quét
-        //         sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
-        //         archiveArtifacts artifacts: 'snyk-report.html' 
-        //     }
-        // }
+        stage('Test Snyk SAST Scan!') {
+            steps {
+                echo 'Testing...'
+                sh 'snyk auth ${SNYK_TOKEN}'
+                sh "snyk code test  --severity-threshold=high --json > snyk-report.json" // Thực hiện Snyk test
+                // Xử lý kết quả quét
+                sh 'snyk-to-html -i snyk-report.json -o snyk-report.html'
+                archiveArtifacts artifacts: 'snyk-report.html' 
+            }
+        }
             
         stage('Stop current Webapp!') {
             steps {
